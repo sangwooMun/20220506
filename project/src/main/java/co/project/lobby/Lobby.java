@@ -1,5 +1,7 @@
 package co.project.lobby;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import co.project.user.User;
@@ -9,41 +11,56 @@ import co.project.userImpl.UserServiceImpl;
 public class Lobby {
 	private UserService dao = new UserServiceImpl();
 	private Scanner scanner = new Scanner(System.in);
-	
-	int array[] = new int[3];
-	int arr[] = new int[11];
-	
-	// 로그인
-//	public void logins() {
-//		User ur = new User();
-//		String id = scanner.nextLine();
-//		ur.setUSERID(id);
-//		System.out.println("로그인에 성공");
-//		ur = dao.userInfoList(ur);
-//	}
+
+
+	public void mainlogin() {
+		User ur = new User();
+		System.out.println("로그인 할 아이디를 입력하세요");
+		String USERID = scanner.nextLine();
+		ur.setUSERID(USERID);
+		UserService userservice = new UserServiceImpl();
+		userservice.userlogin(USERID);
+	}
+
+	public void mainjoins() {
+		User ur = new User();
+		System.out.println("회원가입할 아이디를 입력하세요");
+		ur.setUSERID(scanner.nextLine());
+		System.out.println("가입하는 사람의 이름을 입력하세요");
+		ur.setUSERNAME(scanner.nextLine());
+		
+		int n = dao.userJoin(ur.getUSERID(), ur.getUSERNAME());
+		if(n != 0) {
+			System.out.println("정상적으로 회원가입 완료");
+		}else {
+			System.out.println("정상적으로 회원가입 실패");
+		}
+		
+	}
 
 	public void userInfo() {
-		User ur = new User();
-		String id = scanner.nextLine();
-		ur.setUSERID(id);
-		ur = dao.userInfoList(ur);
+		User us = new User();
+		System.out.println("조회할 아이디를 입력하세요");
+		String USERID = scanner.nextLine();
+		us.setUSERID(USERID);
+		us = dao.userInfoList(us);
+		us.toString();
 		System.out.println("====== User Info ======");
-		ur.toString();
-		System.out.println("====== User Info ======");
-		System.out.println("메뉴로 돌아가려면 아무키나 눌러주세요");
-		scanner.nextLine();
+	}
+	
+	public void allRank() {
+		List<User> list = new ArrayList<User>();
+		list = dao.userSelectList();
+		for(User us : list) {
+			us.toString();
+		}
 	}
 
 	public void normalMode() {
 		System.out.println("=== 게임을 시작합니다 ===");
-		for(int i = 0; i<array.length; i++) {
-			array[i] = (int)(Math.random() * 3) + 1;
-		}
-		
-		
-		
+
 		System.out.println("====== 주문들어왔어요~ ======");
-		
+
 		System.out.println("=========================");
 		System.out.println("빵 종류 : 1.참깨빵 : ▒ ▒ ▒ ▒	2.호밀빵 : ■ ■ ■ ■	3.보리빵 : □ □ □ □");
 		System.out.println("토핑 종류 : 1.불고기 : ◎ ◎ ◎ ◎ ◎		2.새우 : § § § § §	3.상추 : ♧ ♧ ♧ ♧ ♧	4.치즈 : ◇ ◇ ◇ ◇ ◇\n"
@@ -61,7 +78,8 @@ public class Lobby {
 
 	public void gameEx() {
 		System.out.println("--- 게임 설명 ---");
-		System.out.println("");
+		System.out.println("햄버거 타이쿤");
+		System.out.println("잘 만들어보쇼");
 
 	}
 

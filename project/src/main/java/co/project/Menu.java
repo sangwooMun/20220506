@@ -7,7 +7,15 @@ import co.project.lobby.Lobby;
 public class Menu {
 	private Scanner scanner = new Scanner(System.in);
 	private Lobby lobby = new Lobby();
-
+	
+	public void mainJoin() {
+		System.out.println("===============");
+		System.out.println("== 1. 로그인  ");
+		System.out.println("== 2. 회원가입  ");
+		System.out.println("== 3. 종료	");
+		System.out.println("===============");
+	}
+	
 	// 로그인
 //	private void mainlogin() {
 //		System.out.println("로그인을 해야합니다.");
@@ -15,16 +23,19 @@ public class Menu {
 //		System.out.println("== 2. 종료	");
 //	}
 
-	private void mainMenu() {
+	public void mainMenu() {
 		System.out.println("===============");
-		System.out.println("== 1. 나의 정보  ");
-		System.out.println("== 2. 일반 모드  ");
-		System.out.println("== 3. 사용자 모드 ");
-		System.out.println("== 4. 주방 확장  ");
-		System.out.println("== 5. 게임 설명  ");
-		System.out.println("== 6. 종료	");
+		System.out.println("== 1. 정보 조회  ");
+		System.out.println("== 2. 전체 정보  ");
+		System.out.println("== 3. 일반 모드  ");
+		System.out.println("== 4. 사용자 모드 ");
+		System.out.println("== 5. 주방 확장  ");
+		System.out.println("== 6. 게임 설명  ");
+		System.out.println("== 7. 종료	");
 		System.out.println("===============");
 	}
+	
+	// 로그인 or 회원가입 메뉴
 
 //	private void sysModes() {
 //		System.out.println(" 1. 타이머 시간 정하기 (10 ~ 90)");
@@ -56,8 +67,50 @@ public class Menu {
 //			}
 //		} while (!b);
 //	}
-
-	private void mainList() {
+//	public void mainJoins() {
+//		mainJoin();
+//		System.out.println("원하는 작업을 선택하세요");
+//		int num = scanner.nextInt();
+//		scanner.nextLine();
+//		while(true) {
+//			if(num == 1) {
+//				System.out.println("로그인 할 아이디를 입력하세요");
+//				String USERID = scanner.nextLine();
+//				UserService userservice = new UserServiceImpl();
+//				userservice.userlogin(USERID);
+//			}
+//			if(num == 2) {
+//				System.out.println("회원가입할 아이디를 입력하세요");
+//				String USERID = scanner.nextLine();
+//				System.out.println("가입하는 사람의 이름을 입력하세요");
+//				String USERNAME = scanner.nextLine();
+//				UserService userservice = new UserServiceImpl();
+//				userservice.userJoin(USERID, USERNAME);
+//			}
+//			
+//		}
+//	}
+	
+	public void mainhome() {
+		boolean b = false;
+		mainJoin();
+		System.out.println("원하는 작업을 선택 :");
+		int num = scanner.nextInt();
+		switch(num) {
+		case 1:
+			 lobby.mainlogin();
+			 break;
+		case 2:
+			lobby.mainjoins();
+			break;
+		case 3:
+			b = true;
+			System.out.println(" ##안녕히 가세요##");
+			break;
+		} while (!b);
+	}
+	
+	public void mainList() {
 		boolean b = false;
 		do {
 			mainMenu();
@@ -68,18 +121,21 @@ public class Menu {
 				lobby.userInfo();
 				break;
 			case 2:
-				lobby.normalMode();
+				lobby.allRank();
 				break;
 			case 3:
-				lobby.sysMode();
+				lobby.normalMode();
 				break;
 			case 4:
-				lobby.shopUp();
+				lobby.sysMode();
 				break;
 			case 5:
-				lobby.gameEx();
+				lobby.shopUp();
 				break;
 			case 6:
+				lobby.gameEx();
+				break;
+			case 7:
 				b = true;
 				System.out.println(" ##안녕히 가세요##");
 				break;
@@ -88,8 +144,8 @@ public class Menu {
 	}
 
 	public void run() {
-//		mainlo();
-		mainList();
+		mainhome();
+		//		mainList();
 	}
 
 }

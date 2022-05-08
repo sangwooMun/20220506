@@ -4,59 +4,116 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import co.project.Menu;
 import co.project.dao.DataSource;
 import co.project.user.User;
 import co.project.user.UserService;
 
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	private DataSource dao = DataSource.getInstance();
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	
+
+	// 회원가입
+	public int userJoin(String USERID, String USERNAME) {
+		int n = 0;
+		String sql = "INSERT INTO USERS VALUES(?,?,1,0,0,2)";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, USERID);
+			psmt.setString(2, USERNAME);
+			n = psmt.executeUpdate();
+				System.out.println("회원가입 성공");
+				Menu menu = new Menu();
+				menu.mainhome();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
+
 	// 로그인
-//	public String userlogin(String USEDID) {
-//		String sql = "SELECT * FROM USER WHERE USERID=?";
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, "USERID");
-//			rs=psmt.executeQuery();
-//			if(rs.next()) {
-//				if(rs.getString(1).equals(USEDID)) {
-//					System.out.println("로그인 성공");
-//				}else {
-//					System.out.println("로그인 실패");
-//				}
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return userlogin(USEDID);
-//		
-//	}
+	public User userlogin(String USERID) {
+		User us = null;
+		String sql = "SELECT * FROM USERS WHERE USERID=?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, USERID);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+					System.out.println("로그인 성공");
+					Menu menu = new Menu();
+					menu.mainList();
+				} else {
+					System.out.println("로그인 실패");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return us;
+
+	}
+	
+	public List<User> userSelectList(){
+		List<User> list = new ArrayList<User>();
+		User us;
+		String sql = "SELECT * FROM USERS";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				us = new User();
+				us.setUSERID(rs.getString("USERID"));
+				us.setUSERNAME(rs.getString("USERNAME"));
+				us.setUSERLEVEL(rs.getInt("USERLEVEL"));
+				us.setMONEY(rs.getInt("MONEY"));
+				us.setBURGERNUM(rs.getInt("BURGERNUM"));
+				us.setBURGER_MAX(rs.getInt("BURGER_MAX"));
+				list.add(us);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
 	
 	
 	@Override
 	public User userInfoList(User us) {
-		//유저 정보
-		String sql = "SELECT * FROM users WHERE USERID = ?";
+		// 유저 정보
+		String sql = "SELECT * FROM USERS WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, us.getUSERID());
 			rs = psmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				us = new User();
 				us.setUSERID(rs.getString("USERID"));
+				us.setUSERNAME(rs.getString("USERNAME"));
 				us.setUSERLEVEL(rs.getInt("USERLEVEL"));
-				us.setMONETY(rs.getInt("MONETY"));
+				us.setMONEY(rs.getInt("MONEY"));
 				us.setBURGERNUM(rs.getInt("BURGERNUM"));
+				us.setBURGER_MAX(rs.getInt("BURGER_MAX"));
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return us;
@@ -79,13 +136,16 @@ public class UserServiceImpl implements UserService{
 		// 주방 확장
 		return 0;
 	}
-	
+
 	private void close() {
 		try {
-			if(rs != null)rs.close();
-			if(psmt != null)psmt.close();
-			if(conn != null)conn.close();
-		}catch(SQLException e) {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
