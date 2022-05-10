@@ -12,7 +12,7 @@ import co.project.dao.DataSource;
 import co.project.user.User;
 import co.project.user.UserService;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
 	private DataSource dao = DataSource.getInstance();
 	private Connection conn;
@@ -29,12 +29,12 @@ public class UserServiceImpl implements UserService {
 			psmt.setString(1, USERID);
 			psmt.setString(2, USERNAME);
 			n = psmt.executeUpdate();
-				System.out.println("회원가입 성공");
-				Menu menu = new Menu();
-				menu.mainhome();
-		}catch (Exception e) {
+			System.out.println("회원가입 성공");
+			Menu menu = new Menu();
+			menu.mainhome();
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return n;
@@ -50,22 +50,24 @@ public class UserServiceImpl implements UserService {
 			psmt.setString(1, USERID);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-					System.out.println("로그인 성공");
-					Menu menu = new Menu();
-					menu.mainList();
-				} else {
-					System.out.println("로그인 실패");
-				}
+				System.out.println("로그인 성공");
+				Menu menu = new Menu();
+				menu.mainList();
+			} else {
+				System.out.println("로그인 실패");
+				Menu menu = new Menu();
+				menu.mainhome();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return us;
 
 	}
-	
-	public List<User> userSelectList(){
+
+	public List<User> userSelectList() {
 		List<User> list = new ArrayList<User>();
 		User us;
 		String sql = "SELECT * FROM USERS";
@@ -73,7 +75,7 @@ public class UserServiceImpl implements UserService {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				us = new User();
 				us.setUSERID(rs.getString("USERID"));
 				us.setUSERNAME(rs.getString("USERNAME"));
@@ -83,16 +85,15 @@ public class UserServiceImpl implements UserService {
 				us.setBURGER_MAX(rs.getInt("BURGER_MAX"));
 				list.add(us);
 			}
-			
-		}catch(SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close();
 		}
 		return list;
 	}
-	
-	
+
 	@Override
 	public User userInfoList(User us) {
 		// 유저 정보
@@ -122,6 +123,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int userModedate(User us) {
 		// 일반 모드
+
 		return 0;
 	}
 
@@ -135,6 +137,18 @@ public class UserServiceImpl implements UserService {
 	public int usershopUpdate(User us) {
 		// 주방 확장
 		return 0;
+	}
+
+	public void BURGERNUMUp(String USERID) {
+		// 만든 버거 갯수 증가
+		String sql = "UPDATE USERS SET BURGERNUM = BURGERNUM + 1 WHERE USERID =?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, USERID);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void close() {

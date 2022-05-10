@@ -1,54 +1,52 @@
 package co.project.Hamburger;
 
+import lombok.Data;
 
+@Data
 public class Hamburger {
-	private int bread1; // 참깨빵
-	private int bread2; // 호밀빵
-	private int bread3; // 보리빵
-	
-	private int bulgogi; // 불고기
-	private int shrimp; // 새우
-	private int lettuce; // 상추
-	private int cheese; // 치즈
-	private int onion; // 양파
-	private int chicken; //치킨
-	private int bacon; // 베이컨
-	private int steak; // 스테이크
-	private int egg; // 계란
-	private int salad; // 샐러드
-	
-	
-	@Override
-	public String toString() {
-		System.out.println("빵 종류 : " + bread1 + " , " + bread2 + " , " + bread3);
-		System.out.println("토핑 종류 : " + bulgogi + " , " + shrimp + " , \n"
-				+ lettuce + " , " + cheese + " , " + onion + " , " + chicken + " , \n"
-						+ bacon + " , " + steak + " , " + egg + " , " + salad);
+	String[] bread = { " ▤ ▤  ▤ ▤", " ■ ■  ■ ■", " □ □  □ □" };
+//	private String bread1 = "▤ ▤  ▤ ▤"; // 참깨빵
+//	private String bread2 = "■ ■  ■ ■"; // 호밀빵
+//	private String bread3 = "□ □  □ □"; // 보리빵
+
+	public String getbreads(int num) {
+
+		return bread[num - 1];
+	}
+
+	String[] patty = { "◎ ◎ ◎ ◎ ◎", "§  § § §  §", "♧  ♧ ♧ ♧  ♧", "◇ ◇ ◇ ◇ ◇", "＠ ＠ ＠ ＠ ＠\n" + "※ ※ ※ ※ ※", "＆ ＆ ＆ ＆ ＆",
+			"＃ ＃ ＃ ＃ #", "◐ ◐  ◐ ◐ ◐" };
+
+	public String getpattys(int num) {
+
+		return patty[num - 1];
+	}
+
+	public String bur() {
+		
+		Hamburger hbg = new Hamburger();
+		String[] x = hbg.getBread();
+		String[] y = hbg.getBread();
+		for (int i = 0; i < 1; i++) {
+			System.out.println(x[(int) (3 * (Math.random()))]);
+			for (int j = 0; j < (3 * (Math.random())); j++) {
+				System.out.println(y[(int) (4 * (Math.random()))]);
+			}
+			System.out.println(x[(int) (3 * (Math.random()))]);
+
+		}
 		return null;
 	}
-	
-	//변수 설정
-	
-		//버거 자릿수 : 2
-		//패티 갯수 : 3
-		//버거 저장 배열 : 2차원배열 [0][0] -> 1번째 버거의 1번째 재료
-							//[1][1] = > 2번째 버거의 2번쨰 재료
-		/**
-		 * for(버거 자릿수){
-		 * 	for(패티 갯수){
-		 * 	if(배열[i][0] or [i][3]){
-		 * 		빵 종류 랜덤
-		 * }else{
-		 * 	속재료 랜덤 
-		 * }
-		 *   }
-		 * 
-		 * }
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * /
-	
+
+//	private String bulgogi = "◎ ◎ ◎ ◎ ◎"; // 불고기
+//	private String shrimp = "§ § § § §"; // 새우
+//	private String lettuce = "♧ ♧ ♧ ♧ ♧"; // 상추
+//	private String cheese = "◇ ◇ ◇ ◇ ◇"; // 치즈
+//	private String onion = "＠ ＠ ＠ ＠ ＠"; // 양파
+//	private String chicken = "※ ※ ※ ※ ※"; // 치킨
+//	private String bacon = "＆ ＆ ＆ ＆ ＆"; // 베이컨
+//	private String steak = "＃ ＃ ＃ ＃ #"; // 스테이크
+//	private String egg = "◐ ◐ ◐ ◐ ◐"; // 계란
+//	private String salad = "♣ ♣ ♣ ♣ ♣"; // 샐러드
+
 }
