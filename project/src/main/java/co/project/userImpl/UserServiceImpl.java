@@ -12,7 +12,7 @@ import co.project.dao.DataSource;
 import co.project.user.User;
 import co.project.user.UserService;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	private DataSource dao = DataSource.getInstance();
 	private Connection conn;
@@ -20,18 +20,15 @@ public class UserServiceImpl implements UserService{
 	private ResultSet rs;
 
 	// 회원가입
-	public int userJoin(String USERID, String USERNAME) {
+	public int userJoin(String userId, String userName) {
 		int n = 0;
 		String sql = "INSERT INTO USERS VALUES(?,?,1,0,0,2)";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, USERID);
-			psmt.setString(2, USERNAME);
+			psmt.setString(1, userId);
+			psmt.setString(2, userName);
 			n = psmt.executeUpdate();
-			System.out.println("회원가입 성공");
-			Menu menu = new Menu();
-			menu.mainhome();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -41,29 +38,25 @@ public class UserServiceImpl implements UserService{
 	}
 
 	// 로그인
-	public User userlogin(String USERID) {
-		User us = null;
+	public User userlogin(String userId) {
+		User user = new User();
 		String sql = "SELECT * FROM USERS WHERE USERID=?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, USERID);
+			psmt.setString(1, userId);
 			rs = psmt.executeQuery();
-			if (rs.next()) {
-				System.out.println("로그인 성공");
-				Menu menu = new Menu();
-				menu.mainList();
-			} else {
-				System.out.println("로그인 실패");
-				Menu menu = new Menu();
-				menu.mainhome();
+			if(rs.next()) {
+				if(rs.getString(1).equals(userId)) {
+					return user;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return us;
+		return null;
 
 	}
 
@@ -77,12 +70,12 @@ public class UserServiceImpl implements UserService{
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				us = new User();
-				us.setUSERID(rs.getString("USERID"));
-				us.setUSERNAME(rs.getString("USERNAME"));
-				us.setUSERLEVEL(rs.getInt("USERLEVEL"));
-				us.setMONEY(rs.getInt("MONEY"));
-				us.setBURGERNUM(rs.getInt("BURGERNUM"));
-				us.setBURGER_MAX(rs.getInt("BURGER_MAX"));
+				us.setUserId(rs.getString("USERID"));
+				us.setUserName(rs.getString("USERNAME"));
+				us.setUserLever(rs.getInt("USERLEVEL"));
+				us.setMoney(rs.getInt("MONEY"));
+				us.setBurgerNum(rs.getInt("BURGERNUM"));
+				us.setBurger_Max(rs.getInt("BURGER_MAX"));
 				list.add(us);
 			}
 
@@ -95,61 +88,35 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User userInfoList(User us) {
+	public int userInfoList(User us) {
 		// 유저 정보
+		int u = 0;
 		String sql = "SELECT * FROM USERS WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, us.getUSERID());
+			psmt.setString(1, us.getUserId());
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				us = new User();
-				us.setUSERID(rs.getString("USERID"));
-				us.setUSERNAME(rs.getString("USERNAME"));
-				us.setUSERLEVEL(rs.getInt("USERLEVEL"));
-				us.setMONEY(rs.getInt("MONEY"));
-				us.setBURGERNUM(rs.getInt("BURGERNUM"));
-				us.setBURGER_MAX(rs.getInt("BURGER_MAX"));
+				us.setUserId(rs.getString("USERID"));
+				us.setUserName(rs.getString("USERNAME"));
+				us.setUserLever(rs.getInt("USERLEVEL"));
+				us.setMoney(rs.getInt("MONEY"));
+				us.setBurgerNum(rs.getInt("BURGERNUM"));
+				us.setBurger_Max(rs.getInt("BURGER_MAX"));
+				if(rs.getString(1).equals(us.getUserId())) {
+					return u;
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return us;
+		return u;
 	}
 
-	@Override
-	public int userModedate(User us) {
-		// 일반 모드
-
-		return 0;
-	}
-
-	@Override
-	public int userSysModedate(User us) {
-		// 관리자 모드
-		return 0;
-	}
-
-	@Override
-	public int usershopUpdate(User us) {
-		// 주방 확장
-		return 0;
-	}
-
-	public void BURGERNUMUp(String USERID) {
-		// 만든 버거 갯수 증가
-		String sql = "UPDATE USERS SET BURGERNUM = BURGERNUM + 1 WHERE USERID =?";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, USERID);
-			psmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	private void close() {
 		try {
@@ -164,4 +131,30 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 
+	@Override
+	public int userInfoUpdate(User us) {
+		System.out.println(us);
+		// 정보 업데이트
+		int u = 0;
+		String sql = "UPDATE USERS SET USERLEVEL = ?, BURGERNUM = ? WHERE USERID = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, us.getUserLever());
+			psmt.setInt(2, us.getBurgerNum());
+			psmt.setString(3, us.getUserId());
+			u = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+
 }
+
+
+//user.setUserName(rs.getString("USERNAME"));
+//user.setUserLever(rs.getInt("USERLEVEL"));
+//user.setMoney(rs.getInt("MONEY"));
+//user.setBurgerNum(rs.getInt("BURGERNUM"));
+//user.setBurger_Max(rs.getInt("BURGER_MAX"));

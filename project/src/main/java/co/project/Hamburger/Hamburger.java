@@ -5,39 +5,26 @@ import lombok.Data;
 @Data
 public class Hamburger {
 	String[] bread = { " ▤ ▤  ▤ ▤", " ■ ■  ■ ■", " □ □  □ □" };
-//	private String bread1 = "▤ ▤  ▤ ▤"; // 참깨빵
-//	private String bread2 = "■ ■  ■ ■"; // 호밀빵
-//	private String bread3 = "□ □  □ □"; // 보리빵
+	String[] patty = { "◎ ◎ ◎ ◎ ◎", "§  § § §  §", "♧  ♧  ♧ ♧  ♧", "◇ ◇ ◇ ◇ ◇", "＠ ＠ ＠ ＠ ＠\n" + "※ ※ ※ ※ ※", "＆ ＆ ＆ ＆ ＆",
+			"＃ ＃ ＃ ＃ #", "◐ ◐  ◐ ◐ ◐" };
+	
+	int[] breadNum = {1,2,3};
+	int[] pattyNum = {1,2,3,4};
 
+	
 	public String getbreads(int num) {
 
-		return bread[num - 1];
+		return bread[num];
 	}
-
-	String[] patty = { "◎ ◎ ◎ ◎ ◎", "§  § § §  §", "♧  ♧ ♧ ♧  ♧", "◇ ◇ ◇ ◇ ◇", "＠ ＠ ＠ ＠ ＠\n" + "※ ※ ※ ※ ※", "＆ ＆ ＆ ＆ ＆",
-			"＃ ＃ ＃ ＃ #", "◐ ◐  ◐ ◐ ◐" };
-
 	public String getpattys(int num) {
 
-		return patty[num - 1];
+		return patty[num];
 	}
 
-	public String bur() {
-		
-		Hamburger hbg = new Hamburger();
-		String[] x = hbg.getBread();
-		String[] y = hbg.getBread();
-		for (int i = 0; i < 1; i++) {
-			System.out.println(x[(int) (3 * (Math.random()))]);
-			for (int j = 0; j < (3 * (Math.random())); j++) {
-				System.out.println(y[(int) (4 * (Math.random()))]);
-			}
-			System.out.println(x[(int) (3 * (Math.random()))]);
-
-		}
-		return null;
-	}
-
+//	private String bread1 = "▤ ▤  ▤ ▤"; // 참깨빵
+//	private String bread2 = "■ ■  ■ ■"; // 호밀빵
+//	private String bread3 = "□ □  □ □"; // 보리빵	
+	
 //	private String bulgogi = "◎ ◎ ◎ ◎ ◎"; // 불고기
 //	private String shrimp = "§ § § § §"; // 새우
 //	private String lettuce = "♧ ♧ ♧ ♧ ♧"; // 상추

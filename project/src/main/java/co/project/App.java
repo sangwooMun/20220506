@@ -2,6 +2,8 @@ package co.project;
 
 import java.util.Scanner;
 
+import co.project.Hamburger.Hamburger;
+
 
 public class App 
 {
@@ -19,6 +21,16 @@ public class App
     	Menu menu = new Menu();
     	menu.run();
 //    	Hamburger ham = new Hamburger();
-//    	System.out.println(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getbreads(scanner.nextInt()));
+//    	System.out.print(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getpattys(scanner.nextInt()));
+//    	System.out.print(ham.getbreads(scanner.nextInt()));
+//    	System.out.println(ham.getbreads(scanner.nextInt()));
+    	
+//    	String num = ham.getbreads(scanner.nextInt());
+//    	System.out.println(num);
     }
 }
