@@ -23,4 +23,7 @@ public class User {
 		
 	}
 
+	public void userIdInfo(String userId) {
+		this.userId = userId;
+	}
 }

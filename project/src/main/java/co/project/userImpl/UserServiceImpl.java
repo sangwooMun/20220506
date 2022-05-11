@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> userSelectList() {
 		List<User> list = new ArrayList<User>();
 		User us;
-		String sql = "SELECT * FROM USERS";
+		String sql = "SELECT * FROM USERS WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -88,33 +88,29 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int userInfoList(User us) {
+	public User userInfo(User ur) {
 		// 유저 정보
-		int u = 0;
 		String sql = "SELECT * FROM USERS WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, us.getUserId());
+			psmt.setString(1, ur.getUserId());
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				us = new User();
-				us.setUserId(rs.getString("USERID"));
-				us.setUserName(rs.getString("USERNAME"));
-				us.setUserLever(rs.getInt("USERLEVEL"));
-				us.setMoney(rs.getInt("MONEY"));
-				us.setBurgerNum(rs.getInt("BURGERNUM"));
-				us.setBurger_Max(rs.getInt("BURGER_MAX"));
-				if(rs.getString(1).equals(us.getUserId())) {
-					return u;
-				}
+				ur = new User();
+				ur.setUserId(rs.getString("USERID"));
+				ur.setUserName(rs.getString("USERNAME"));
+				ur.setUserLever(rs.getInt("USERLEVEL"));
+				ur.setMoney(rs.getInt("MONEY"));
+				ur.setBurgerNum(rs.getInt("BURGERNUM"));
+				ur.setBurger_Max(rs.getInt("BURGER_MAX"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return u;
+		return ur;
 	}
 
 
@@ -132,17 +128,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int userInfoUpdate(User us) {
-		System.out.println(us);
+	public int userInfoUpdate(User ur) {
+		System.out.println(ur);
 		// 정보 업데이트
 		int u = 0;
 		String sql = "UPDATE USERS SET USERLEVEL = ?, BURGERNUM = ? WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, us.getUserLever());
-			psmt.setInt(2, us.getBurgerNum());
-			psmt.setString(3, us.getUserId());
+			psmt.setInt(1, ur.getUserLever());
+			psmt.setInt(2, ur.getBurgerNum());
+			psmt.setString(3, ur.getUserId());
 			u = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -29,8 +29,6 @@ public class Lobby {
 			Menu menu = new Menu();
 			menu.mainList();
 		}
-		
-		
 	}
 
 	public void mainjoins() {
@@ -52,16 +50,24 @@ public class Lobby {
 	}
 
 	public void userInfo() {
-		ur.getUserId();
-		ur.toString();
-		int s = ur.getUserLever();
+//		System.out.println("로그인 할 아이디를 입력하세요");
+//		String userId = scanner.nextLine();
+//		ur.setUserId(userId);
+//		loginUser = userservice.userlogin(userId);
+//		User abc = loginUser;
+//		ur.userIdInfo("test");
+		ur.setUserId("test");
+//		userservice.userInfo(ur).equals(loginUser);
+		userservice.userInfo(ur).toString();
+//		userservice.userInfo(abc).toString();
+//		int s = ur.getUserLever();
 		System.out.println("====== User Info ======");
-		for (int i = 0; i < ur.getBurgerNum(); i++) {
-			if (ur.getBurgerNum() % 20 == 0) {
-				s++;
-			}
-			System.out.println(s);
-		}
+//		for (int i = 0; i < ur.getBurgerNum(); i++) {
+//			if (ur.getBurgerNum() % 20 == 0) {
+//				s++;
+//			}
+//			System.out.println(s);
+//		}
 	}
 
 	public void allRank() {
