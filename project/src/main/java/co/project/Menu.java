@@ -7,15 +7,47 @@ import co.project.lobby.Lobby;
 public class Menu {
 	private Scanner scanner = new Scanner(System.in);
 	private Lobby lobby = new Lobby();
-	
+
 	public void mainJoin() {
-		System.out.println("===============");
-		System.out.println("== 1. 로그인  ");
-		System.out.println("== 2. 회원가입  ");
-		System.out.println("== 3. 종료	");
-		System.out.println("===============");
+		System.out.println("      __  __                             __                                                 \r\n"
+				+ "     /\\ \\/\\ \\                           /\\ \\                                                \r\n"
+				+ "     \\ \\ \\_\\ \\      __       ___ ___    \\ \\ \\____   __  __   _ __     __        __    _ __  \r\n"
+				+ "      \\ \\  _  \\   /'__`\\   /' __` __`\\   \\ \\ '__`\\ /\\ \\/\\ \\ /\\`'__\\ /'_ `\\    /'__`\\ /\\`'__\\\r\n"
+				+ "       \\ \\ \\ \\ \\ /\\ \\L\\.\\_ /\\ \\/\\ \\/\\ \\   \\ \\ \\L\\ \\\\ \\ \\_\\ \\\\ \\ \\/ /\\ \\L\\ \\  /\\  __/ \\ \\ \\/ \r\n"
+				+ "        \\ \\_\\ \\_\\\\ \\__/.\\_\\\\ \\_\\ \\_\\ \\_\\   \\ \\_,__/ \\ \\____/ \\ \\_\\ \\ \\____ \\ \\ \\____\\ \\ \\_\\ \r\n"
+				+ "         \\/_/\\/_/ \\/__/\\/_/ \\/_/\\/_/\\/_/    \\/___/   \\/___/   \\/_/  \\/___L\\ \\ \\/____/  \\/_/ \r\n"
+				+ "                                                                      /\\____/               \r\n"
+				+ "                                                                      \\_/__/                \r\n"
+				+ "     ");
+		System.out.println("                                  \r\n"
+				+ "                                  ⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠤⠒⠒⠒⠀⠒⠒⠂⠤⣀⡀⠀⠀⠀⠀⠀⠀⠀\r\n"
+				+ "                                  ⠀⠀⠀⠀⠀⢀⠔⠊⠁⠃⠀⠀⠐⠀⠀⠤⢜⢀⠀⠀⠈⠒⢄⠀⠀⠀⠀⠀\r\n"
+				+ "                                  ⠀⠀⠀⢀⢔⢥⢎⠞⠡⠀⠦⠀⠀⠀⠠⠄⠀⠘⠁⠀⠄⠀⠑⠑⡄⠀⠀⠀\r\n"
+				+ "                                  ⠀⢀⡀⡮⢹⡷⡈⡄⢄⡀⢀⠠⡂⠀⢀⣀⢠⠰⣀⠀⣀⠄⣤⡴⣺⢔⣙⡂\r\n"
+				+ "                                  ⠀⠟⠢⣷⡷⣿⣾⣷⣵⣾⣓⢶⣾⣷⢞⣖⣓⡗⠺⠭⣟⠣⣵⡫⠝⡒⢢⡙\r\n"
+				+ "                                  ⠀⢲⣖⡐⠁⠖⡲⢃⣷⢶⢶⢺⡭⢥⡎⠼⢖⣲⠯⠉⠦⣑⠸⠘⠒⢖⠂⠀\r\n"
+				+ "                                  ⡠⢒⣒⢾⢩⣳⢄⠀⠀⠥⢀⣄⢬⠥⠶⠶⠘⠛⣯⠐⠐⠚⠹⠏⠕⡖⠃⠞\r\n"
+				+ "                                  ⠀⢹⠠⢎⠖⣣⡠⢓⢔⠮⢅⣀⣄⡀⡠⢄⣩⣭⣁⠆⢢⠤⢶⡮⠝⠒⠉⠀\r\n"
+				+ "                                  ⠀⠀⠀⠉⢿⣟⢅⢻⢇⡖⣻⢎⣏⣻⣶⠾⠣⢂⢝⡥⡚⢅⠩⡹⠀⠀⠀⠀\r\n"
+				+ "                                  ⠤⠤⠄⠀⠈⠑⠥⠍⣉⣋⣁⣂⣊⣚⣁⣈⣈⣀⡁⠠⠤⠔⠊⠀⠀⠀⠀⠀\r\n"
+				+ "                                  ");
+		System.out.printf("           ____  _________  ____  ____  ____  ____  ____  ____  ____  _________  ____ \r\n"
+				+ 	"          ||~ ||||       ||||F ||||a ||||c ||||t ||||o ||||r ||||y ||||       ||||~ ||\r\n"
+				+ 	"          ||__||||_______||||__||||__||||__||||__||||__||||__||||__||||_______||||__||\r\n"
+				+ 	"          |/__\\||/_______\\||/__\\||/__\\||/__\\||/__\\||/__\\||/__\\||/__\\||/_______\\||/__\\|\r\n"
+				+ 	"          ");
+		System.out.println(" ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  \r\n"
+				+ "          |___||___||___||___||___||___||___||___||___||___||___||___||___||___||___|\r\n"
+				);
+		
+		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
+		System.out.println("                                         == 1. 게임 시작	");
+		System.out.println("                                         == 2. 로그인  ");
+		System.out.println("                                         == 3. 회원가입  ");
+		System.out.println("                                         == 4. 종료	");
+		System.out.println("                               └============= ๑'ٮ'๑ =============┘");
 	}
-	
+
 	// 로그인
 //	private void mainlogin() {
 //		System.out.println("로그인을 해야합니다.");
@@ -24,17 +56,17 @@ public class Menu {
 //	}
 
 	public void mainMenu() {
-		System.out.println("===============");
-		System.out.println("== 1. 정보 조회  ");
-		System.out.println("== 2. 전체 정보  ");
-		System.out.println("== 3. 일반 모드  ");
-		System.out.println("== 4. 사용자 모드 ");
-		System.out.println("== 5. 주방 확장  ");
-		System.out.println("== 6. 게임 설명  ");
-		System.out.println("== 7. 종료	");
-		System.out.println("===============");
+		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
+		System.out.println("                                         == 1. 정보 조회  ");
+		System.out.println("                                         == 2. 전체 정보  ");
+		System.out.println("                                         == 3. 일반 모드  ");
+		System.out.println("                                         == 4. 사용자 모드 ");
+		System.out.println("                                         == 5. 주방 확장  ");
+		System.out.println("                                         == 6. 게임 설명  ");
+		System.out.println("                                         == 7. 종료	");
+		System.out.println("                               └============= ๑'ٮ'๑ =============┘");
 	}
-	
+
 	// 로그인 or 회원가입 메뉴
 
 //	private void sysModes() {
@@ -50,66 +82,30 @@ public class Menu {
 //		System.out.println(" *주방은 순서대로 구매할 수 있습니다.* ");
 //	}
 
-//	private void mainlo() {
-//		boolean b = false;
-//		do {
-//			mainlogin();
-//			System.out.println("원하는 번호를 입력하세요");
-//			int lo = scanner.nextInt();
-//			switch (lo) {
-//			case 1:
-//				lobby.logins();
-//				break;
-//			case 2:
-//				b = true;
-//				System.out.println(" ##안녕히 가세요##");
-//				break;
-//			}
-//		} while (!b);
-//	}
-//	public void mainJoins() {
-//		mainJoin();
-//		System.out.println("원하는 작업을 선택하세요");
-//		int num = scanner.nextInt();
-//		scanner.nextLine();
-//		while(true) {
-//			if(num == 1) {
-//				System.out.println("로그인 할 아이디를 입력하세요");
-//				String USERID = scanner.nextLine();
-//				UserService userservice = new UserServiceImpl();
-//				userservice.userlogin(USERID);
-//			}
-//			if(num == 2) {
-//				System.out.println("회원가입할 아이디를 입력하세요");
-//				String USERID = scanner.nextLine();
-//				System.out.println("가입하는 사람의 이름을 입력하세요");
-//				String USERNAME = scanner.nextLine();
-//				UserService userservice = new UserServiceImpl();
-//				userservice.userJoin(USERID, USERNAME);
-//			}
-//			
-//		}
-//	}
-	
 	public void mainhome() {
 		boolean b = false;
-		mainJoin();
-		System.out.println("원하는 작업을 선택 :");
-		int num = scanner.nextInt();
-		switch(num) {
-		case 1:
-			 lobby.mainlogin();
-			 break;
-		case 2:
-			lobby.mainjoins();
-			break;
-		case 3:
-			b = true;
-			System.out.println(" ##안녕히 가세요##");
-			break;
+		do {
+			mainJoin();
+			System.out.println("원하는 작업을 선택 :");
+			int num = scanner.nextInt();
+			switch (num) {
+			case 1:
+				mainList();
+				break;
+			case 2:
+				lobby.mainlogin();
+				break;
+			case 3:
+				lobby.mainjoins();
+				break;
+			case 4:
+				b = true;
+				System.out.println(" ##안녕히 가세요##");
+				break;
+			}
 		} while (!b);
 	}
-	
+
 	public void mainList() {
 		boolean b = false;
 		do {
@@ -124,7 +120,7 @@ public class Menu {
 				lobby.allRank();
 				break;
 			case 3:
-				lobby.normalMode();
+				lobby.test1();
 				break;
 			case 4:
 				lobby.sysMode();
@@ -145,7 +141,7 @@ public class Menu {
 
 	public void run() {
 		mainhome();
-		//		mainList();
+		// mainList();
 	}
 
 }

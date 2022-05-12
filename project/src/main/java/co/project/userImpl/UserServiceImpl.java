@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
 	// 로그인
 	public User userlogin(String userId) {
-		User user = new User();
+		User ur = new User();
 		String sql = "SELECT * FROM USERS WHERE USERID=?";
 		try {
 			conn = dao.getConnection();
@@ -48,7 +48,14 @@ public class UserServiceImpl implements UserService {
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userId)) {
-					return user;
+					ur = new User();
+					ur.setUserId(rs.getString("USERID"));
+					ur.setUserName(rs.getString("USERNAME"));
+					ur.setUserLever(rs.getInt("USERLEVEL"));
+					ur.setMoney(rs.getInt("MONEY"));
+					ur.setBurgerNum(rs.getInt("BURGERNUM"));
+					ur.setBurger_Max(rs.getInt("BURGER_MAX"));
+					return ur;
 				}
 			}
 		} catch (Exception e) {
@@ -63,7 +70,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> userSelectList() {
 		List<User> list = new ArrayList<User>();
 		User us;
-		String sql = "SELECT * FROM USERS WHERE USERID = ?";
+		String sql = "SELECT * FROM USERS";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -126,6 +133,22 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 	}
+	
+	public int burgerAdd(User ur) {
+		int u = 0;
+		String sql ="UPDATE USERS SET BURGERNUM = BURGERNUM + ? WHERE USERID = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, ur.getBurgerNum());
+			psmt.setString(2, ur.getUserId());
+			u = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+		
+	}
 
 	@Override
 	public int userInfoUpdate(User ur) {
@@ -145,12 +168,8 @@ public class UserServiceImpl implements UserService {
 		}
 		return u;
 	}
-
+	
+//	String sql = "UPDATE USERS SET USERLEVEL = USERLEVEL +(TRUNC ( BURGERNUM/20 )) WHERE USERID = ?";
+//	String sql = "UPDATE USERS SET BURGERNUM = BURGERNUM + 1 WHERE USERID = ?";
+//	String sql = "UPDATE USERS SET USERLEVEL = ?, BURGERNUM = ? WHERE USERID = ?";
 }
-
-
-//user.setUserName(rs.getString("USERNAME"));
-//user.setUserLever(rs.getInt("USERLEVEL"));
-//user.setMoney(rs.getInt("MONEY"));
-//user.setBurgerNum(rs.getInt("BURGERNUM"));
-//user.setBurger_Max(rs.getInt("BURGER_MAX"));

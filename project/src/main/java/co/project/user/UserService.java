@@ -10,5 +10,5 @@ public interface UserService {
 	int userJoin(String userId, String userName);
 	public User userlogin(String userId);
 	int userInfoUpdate(User ur);
-	
+	public int burgerAdd(User ur);
 }
