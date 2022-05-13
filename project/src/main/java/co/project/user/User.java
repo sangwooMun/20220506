@@ -9,7 +9,6 @@ public class User {
 	private int userLever;
 	private int money;
 	private int BurgerNum;
-	private int Burger_Max;
 	
 	public String toString() {
 		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
@@ -18,7 +17,6 @@ public class User {
 		System.out.println("                                       레벨 : " + userLever);
 		System.out.println("                                       보유한 금액 : " + money);
 		System.out.println("                                       만든 버거 갯수 : " + BurgerNum);
-		System.out.println("                                       만들 수 있는 버거 갯수 : " + Burger_Max);
 		System.out.println("                               └============= ๑'ٮ'๑ =============┘");
 		return null;
 		

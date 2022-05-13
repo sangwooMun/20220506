@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService {
 					ur.setUserLever(rs.getInt("USERLEVEL"));
 					ur.setMoney(rs.getInt("MONEY"));
 					ur.setBurgerNum(rs.getInt("BURGERNUM"));
-					ur.setBurger_Max(rs.getInt("BURGER_MAX"));
 					return ur;
 				}
 			}
@@ -82,7 +81,6 @@ public class UserServiceImpl implements UserService {
 				us.setUserLever(rs.getInt("USERLEVEL"));
 				us.setMoney(rs.getInt("MONEY"));
 				us.setBurgerNum(rs.getInt("BURGERNUM"));
-				us.setBurger_Max(rs.getInt("BURGER_MAX"));
 				list.add(us);
 			}
 
@@ -110,7 +108,6 @@ public class UserServiceImpl implements UserService {
 				ur.setUserLever(rs.getInt("USERLEVEL"));
 				ur.setMoney(rs.getInt("MONEY"));
 				ur.setBurgerNum(rs.getInt("BURGERNUM"));
-				ur.setBurger_Max(rs.getInt("BURGER_MAX"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
