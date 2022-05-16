@@ -21,8 +21,5 @@ public class User {
 		return null;
 		
 	}
-
-	public void userIdInfo(String userId) {
-		this.userId = userId;
-	}
+	
 }

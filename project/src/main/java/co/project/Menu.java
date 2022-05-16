@@ -5,11 +5,13 @@ import java.util.Scanner;
 import java.util.TimerTask;
 
 import co.project.lobby.Lobby;
+import co.project.lobby.Lobby1;
 import co.project.lobby.ThreadTest;
 
 public class Menu {
 	private Scanner scanner = new Scanner(System.in);
 	private Lobby lobby = new Lobby();
+	private Lobby1 lobby1 = new Lobby1();
 	ThreadTest t1 = new ThreadTest();
 
 	public void mainJoin() {
@@ -20,7 +22,7 @@ public class Menu {
 		System.out.println("                                         == 2. 회원가입  ");
 		System.out.println("                                         == 3. 종료	");
 		System.out.println("                               └============= ๑'ٮ'๑ =============┘");
-	}
+		}
 
 	public void mainMenu() {
 		System.out.println("                               ┌============= Menu =============┐");
@@ -63,7 +65,6 @@ public class Menu {
 					b = true;
 					System.out.println(" ##안녕히 가세요##");
 					break;
-
 				}
 			} while (!b);
 		} catch (InputMismatchException e) {

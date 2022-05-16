@@ -152,13 +152,14 @@ public class UserServiceImpl implements UserService {
 		System.out.println(ur);
 		// 정보 업데이트
 		int u = 0;
-		String sql = "UPDATE USERS SET USERLEVEL = ?, BURGERNUM = ? WHERE USERID = ?";
+		String sql = "UPDATE USERS SET USERLEVEL = ?, BURGERNUM = ?, MONEY = ? WHERE USERID = ?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, ur.getUserLever());
 			psmt.setInt(2, ur.getBurgerNum());
-			psmt.setString(3, ur.getUserId());
+			psmt.setInt(3, ur.getMoney());
+			psmt.setString(4, ur.getUserId());
 			u = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

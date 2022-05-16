@@ -79,38 +79,70 @@ public class ThreadTest extends Thread {
 		System.out.println("           ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ");
 		System.out.println("          |___||___||___||___||___||___||___||___||___||___||___||___||___||___||___|");
 	}
+
 	
+	
+	public void mainScreen20() {
+		System.out.println("                               ");
+		System.out.println("                               ⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠤⠒⠒⠒⠀⠒⠒⠂⠤⣀⡀⠀⠀⠀⠀⠀⠀⠀");
+	}
+	public void mainScreen21() {
+		System.out.println("                               ⠀⠀⠀⠀⠀⢀⠔⠊⠁⠃⠀⠀⠐⠀⠀⠤⢜⢀⠀⠀⠈⠒⢄⠀⠀⠀⠀⠀");
+		System.out.println("                               ⠀⠀⠀⢀⢔⢥⢎⠞⠡⠀⠦⠀⠀⠀⠠⠄⠀⠘⠁⠀⠄⠀⠑⠑⡄⠀⠀⠀");
+	}
+	public void mainScreen22() {
+		System.out.println("                               ⠀⢀⡀⡮⢹⡷⡈⡄⢄⡀⢀⠠⡂⠀⢀⣀⢠⠰⣀⠀⣀⠄⣤⡴⣺⢔⣙⡂");
+		System.out.println("                               ⠀⠟⠢⣷⡷⣿⣾⣷⣵⣾⣓⢶⣾⣷⢞⣖⣓⡗⠺⠭⣟⠣⣵⡫⠝⡒⢢⡙");
+	}
+	public void mainScreen23() {
+		System.out.println("                               ⠀⢲⣖⡐⠁⠖⡲⢃⣷⢶⢶⢺⡭⢥⡎⠼⢖⣲⠯⠉⠦⣑⠸⠘⠒⢖⠂⠀");
+		System.out.println("                               ⡠⢒⣒⢾⢩⣳⢄⠀⠀⠥⢀⣄⢬⠥⠶⠶⠘⠛⣯⠐⠐⠚⠹⠏⠕⡖⠃⠞");
+	}
+
+	public void mainScreen24() {
+		System.out.println("                               ⠀⢹⠠⢎⠖⣣⡠⢓⢔⠮⢅⣀⣄⡀⡠⢄⣩⣭⣁⠆⢢⠤⢶⡮⠝⠒⠉⠀");
+		System.out.println( "                               ⠀⠀⠀⠉⢿⣟⢅⢻⢇⡖⣻⢎⣏⣻⣶⠾⠣⢂⢝⡥⡚⢅⠩⡹⠀⠀⠀⠀");
+	}
+
+	public void mainScreen25() {
+		System.out.println("                               ⠤⠤⠄⠀⠈⠑⠥⠍⣉⣋⣁⣂⣊⣚⣁⣈⣈⣀⡁⠠⠤⠔⠊⠀⠀⠀⠀⠀\r\n");
+		System.out.println("                               ");
+	}
+
 	public void mainScreen() {
 		try {
 			for (int i = 0; i < 1; i++) {
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen1();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen2();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen3();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen4();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen5();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen6();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen7();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen8();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen9();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen10();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen11();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen12();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen13();
-				ThreadTest.sleep(100);
+				ThreadTest.sleep(150);
 				mainScreen14();
+				
+				
+				
 			}
 		} catch (InterruptedException e) {
 			System.out.println(e);
