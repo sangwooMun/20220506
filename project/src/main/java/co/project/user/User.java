@@ -11,7 +11,7 @@ public class User {
 	private int BurgerNum;
 	
 	public String toString() {
-		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
+		System.out.println("                               ┌==========  User Info  =========┐");
 		System.out.println("                                       유저 아이디 : " + userId);
 		System.out.println("                                       유저 이름 : " + userName);
 		System.out.println("                                       레벨 : " + userLever);

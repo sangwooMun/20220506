@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	// 회원가입
 	public int userJoin(String userId, String userName) {
 		int n = 0;
-		String sql = "INSERT INTO USERS VALUES(?,?,1,0,0,2)";
+		String sql = "INSERT INTO USERS VALUES(?,?,1,0,0)";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);

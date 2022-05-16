@@ -7,15 +7,15 @@ public class Hamburger {
 	String[] bread = { " ▤▤▤▤▤▤▤▤", "  ■■■■■■■■", "  □□□□□□□□" };
 	String[] patty = { "◎◎◎◎◎◎◎◎◎◎◎", "§§§§§§§§§§§§", "♧♧♧♧♧♧♧♧♧♧♧♧♧", "◇◇◇◇◇◇◇◇◇◇◇", "＠＠＠＠＠＠＠＠＠", "○○○○○○○○○○○○", "▦▦▦▦▦▦▦▦▦▦▦", "●●●●●●●●●●●●", "◐◐◐◐◐◐◐◐◐◐◐" };
 	int[] breadNum = {1,2,3};
-	int[] pattyNum = {1,2,3,4};
+	int[] pattyNum = {1,2,3,4,5,6,7,8,9};
 
 	public String getbreads(int num) {
 
-		return bread[num];
+		return bread[num - 1];
 	}
 	public String getpattys(int num) {
 
-		return patty[num];
+		return patty[num - 1];
 	}
 
 //	private String bread1 = "▤ ▤  ▤ ▤"; // 참깨빵

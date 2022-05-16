@@ -1,5 +1,6 @@
 package co.project;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.TimerTask;
 
@@ -13,17 +14,16 @@ public class Menu {
 
 	public void mainJoin() {
 		t1.mainScreen();
-		
-		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
-		System.out.println("                                         == 1. 게임 시작	");
-		System.out.println("                                         == 2. 로그인  ");
-		System.out.println("                                         == 3. 회원가입  ");
-		System.out.println("                                         == 4. 종료	");
+
+		System.out.println("                               ┌============= Menu =============┐");
+		System.out.println("                                         == 1. 로그인  ");
+		System.out.println("                                         == 2. 회원가입  ");
+		System.out.println("                                         == 3. 종료	");
 		System.out.println("                               └============= ๑'ٮ'๑ =============┘");
 	}
 
 	public void mainMenu() {
-		System.out.println("                               ┌============= ๑'ٮ'๑ =============┐");
+		System.out.println("                               ┌============= Menu =============┐");
 		System.out.println("                                         == 1. 정보 조회  ");
 		System.out.println("                                         == 2. 전체 정보  ");
 		System.out.println("                                         == 3. 일반 모드  ");
@@ -43,26 +43,35 @@ public class Menu {
 
 	public void mainhome() {
 		boolean b = false;
-		do {
-			mainJoin();
-			System.out.println("원하는 작업을 선택 :");
-			int num = scanner.nextInt();
-			switch (num) {
-			case 1:
-				mainList();
-				break;
-			case 2:
-				lobby.mainlogin();
-				break;
-			case 3:
-				lobby.mainjoins();
-				break;
-			case 4:
-				b = true;
-				System.out.println(" ##안녕히 가세요##");
-				break;
-			}
-		} while (!b);
+		try {
+			do {
+				mainJoin();
+				System.out.println("원하는 작업을 선택 :");
+				int num = scanner.nextInt();
+
+				switch (num) {
+				case 1:
+					lobby.mainlogin();
+					if (lobby.getLoginUser() != null) {
+						mainList();
+					}
+					break;
+				case 2:
+					lobby.mainjoins();
+					break;
+				case 3:
+					b = true;
+					System.out.println(" ##안녕히 가세요##");
+					break;
+
+				}
+			} while (!b);
+		} catch (InputMismatchException e) {
+			scanner = new Scanner(System.in);
+			System.out.println("잘 못 입력하셨습니다.");
+			System.out.println("메인화면으로 넘어갑니다. 정수를 입력하세요.");
+			mainhome();
+		}
 	}
 
 	public void mainList() {
